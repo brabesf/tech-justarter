@@ -9,6 +9,7 @@ function createHTTPClient(baseURL, timeout = 5000) {
     baseURL,
     timeout,
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
   });
