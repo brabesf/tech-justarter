@@ -8,14 +8,14 @@ class lawsuitsAPI {
     this.client = createHTTPClient(baseURL, timeout);
   }
 
-  search(query) {
-    return this.client.post('', { query })
-    .then((response) => {
+  async search(query) {
+    try {
+      const response = await this.client.post('', { query });
+      console.log("called")
       return response.data;
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error('Error in API call:', error);
-    });
+    }
   }
 }
 

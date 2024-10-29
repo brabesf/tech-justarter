@@ -10,7 +10,7 @@ export const LawsuitType = new GraphQLObjectType({
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
     number: { type: new GraphQLNonNull(GraphQLString) },
-    court: { type: new GraphQLNonNull(GraphQLInt) },
+    court: { type: new GraphQLNonNull(GraphQLString) },
     nature: { type: new GraphQLNonNull(GraphQLString) },
     kind: { type: new GraphQLNonNull(GraphQLString) },
     subject: { type: new GraphQLNonNull(GraphQLString) },

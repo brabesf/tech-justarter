@@ -1,0 +1,9 @@
+.lawsuit {
+    height: 15vh;
+    width: 50vw;
+  }
+  
+  .lawsuit:hover {
+    background-color: #26997B;
+  }
+  

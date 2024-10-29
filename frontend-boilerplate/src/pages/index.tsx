@@ -1,9 +1,11 @@
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
 import { Button, Flex, Text } from "@radix-ui/themes";
+import { useRouter } from "next/router";
 import Head from "next/head";
-
-import { HelloWorld } from "@/components";
+import { useState } from "react";
+import { HelloWorld, SearchHeader, SearchInput } from "@/components";
 import { UserCard } from "@/components/user-card/user-card";
+import { LawsuitCard } from "@/components/lawsuit-card/lawsuit-card";
 import { addApolloState, initializeApollo } from "@/lib/apolloClient";
 import styles from "@/styles/Home.module.css";
 
@@ -25,20 +27,52 @@ const exampleQuery = gql`
   ${UserFragment}
 `;
 
+const searchQuery = gql`
+  query search($query: String!) {
+    getSearchQuery(query: $query) {
+      hits
+      lawsuits{
+        number
+        court
+      }
+    }
+  }
+`;
+
 interface HomeProps {
   variables: {
-    userId: string;
+    query: string;
   };
 }
 
 export default function Home(props: HomeProps) {
   const { variables } = props;
-  const { data } = useQuery(exampleQuery, {
+  const { data } = useQuery(searchQuery, {
     variables,
   });
+  const router = useRouter();
+  const [court, setCourt] = useState('Tribunal')
+
+  const [cnj, setCnj] = useState('');
+
+  
 
   const [loadUser, { loading: loadingNewUser, data: newUser }] =
     useLazyQuery(exampleQuery);
+
+  const [loadSearch, { loading: loadingSearch, data: searchResponse }] =
+    useLazyQuery(searchQuery);
+
+  const onSearch = () => {
+    loadSearch({
+      variables: {
+        query: cnj,
+      },
+      onError: (error) => {
+        console.error(error);
+      },
+    });
+  }
 
   const onLoadUser = () => {
     loadUser({
@@ -51,21 +85,31 @@ export default function Home(props: HomeProps) {
     });
   };
 
-  const user = data?.getUserQuery;
+  const handleSelectLawsuit = (selected) => {
+    router.push(`/lawsuit/${selected.number}`); 
+    
+  };
 
+  const search = data?.getSearchQuery;
   return (
     <>
       <Head>
-        <title>Desafio Justarter</title>
+        <title>Consulta processual</title>
       </Head>
 
       <main className={styles.home}>
-        <Flex align="center" justify="center" direction={"column"} gap="6">
-          <HelloWorld />
-          <Button onClick={onLoadUser}>Carregar outro usuário</Button>
-          <UserCard user={user} />
-          {loadingNewUser && <Text>Carregando...</Text>}
-          {newUser?.getUserQuery && <UserCard user={newUser.getUserQuery} />}
+        <Flex className={styles.header}>
+          <SearchHeader/>
+         
+          <SearchInput tribunal={court} setTribunal={setCourt} cnj={cnj} setCnj={setCnj} onSearch={onSearch}/>
+          <Flex className={styles.results}>
+            
+            {loadingSearch && <Text>Carregando...</Text>}
+            {searchResponse?.getSearchQuery && searchResponse.getSearchQuery.lawsuits.map((item, index) => (
+                                                  <LawsuitCard key={index} props={item} handleClick={handleSelectLawsuit}/>
+                                                ))}
+                                            
+          </Flex>
         </Flex>
       </main>
     </>
@@ -75,11 +119,11 @@ export default function Home(props: HomeProps) {
 export async function getServerSideProps() {
   const apolloClient = initializeApollo();
   const variables = {
-    userId: "1",
+    query: "Ana luiza",
   };
 
   await apolloClient.query({
-    query: exampleQuery,
+    query: searchQuery,
     variables,
   });
 
