@@ -9,7 +9,7 @@ export function CnjSelector({ cnj, setCnj }) {
     
 
   return (
-    <input
+    <TextField.Root
       type="text"
       value={cnj}
       onChange={handleChange}

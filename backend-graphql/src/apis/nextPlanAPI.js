@@ -1,16 +1,16 @@
 import createHTTPClient from './httpClient';
 
-const BASE_URL = 'http://localhost:8000/search';
+const BASE_URL = 'http://localhost:9777/box-lock';
 const TIMEOUT = 5000;
 
-class lawsuitsAPI {
+class nextPlanAPI {
   constructor(baseURL, timeout) {
     this.client = createHTTPClient(baseURL, timeout);
   }
 
-  async search(query) {
+  async getPlan() {
     try {
-      const response = await this.client.post('', { query });
+      const response = await this.client.get('');
       return response.data;
     } catch (error) {
       console.error('Error in API call:', error);
@@ -18,4 +18,4 @@ class lawsuitsAPI {
   }
 }
 
-export default new lawsuitsAPI(BASE_URL, TIMEOUT);
+export default new nextPlanAPI(BASE_URL, TIMEOUT);
