@@ -2,3 +2,8 @@ export * from "./hello-world/hello-world";
 export * from "./search-header/search-header"
 export * from "./search-input/search-input"
 export * from "./lawsuit-card/lawsuit-card"
+export * from "./lawsuit-header/lawsuit-header"
+export * from "./lawsuit-movement/lawsuit-movement"
+export * from "./lawsuit-movement/lawsuit-movement-list"
+export * from "./people-and-lawyers/people-and-lawyers"
+export * from "./lawsuit-details/lawsuit-details"
