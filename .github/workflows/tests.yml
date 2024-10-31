@@ -1,0 +1,28 @@
+name: Test frontend components
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  
+          cache: 'pnpm'  
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: frontend-boilerplate  # Navigate to your project folder
+
+      - name: Run tests
+        run: pnpm run test
+        working-directory: frontend-boilerplate  # Navigate to your project folder
