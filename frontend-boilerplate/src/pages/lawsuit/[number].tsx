@@ -194,7 +194,7 @@ export default function LawsuitPage(props: HomeProps) {
         <title>{"Processo " + lawsuit.number}</title>
       </Head>
       <main className={styles.home}>
-        <LawsuitHeader number={lawsuit.number} court={lawsuit.court} date={lawsuit.date} handleBack={handleBack}/>
+        <LawsuitHeader lawsuit={lawsuit} handleBack={handleBack}/>
         <Flex gap='9'>
           <LawsuitMovementList movements={lawsuit.activities.slice().reverse()} 
                                 participating={experiment == 'variant-a' || experiment == 'variant-b'} 

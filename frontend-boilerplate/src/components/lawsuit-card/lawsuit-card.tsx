@@ -1,8 +1,9 @@
 import { Card, DataList } from "@radix-ui/themes";
 
+import { LawsuitCardComponentProps} from '@/interfaces/Lawsuit-card.types'; 
 import styles from "@/styles/Lawsuit-card.module.css";
 
-export function LawsuitCard({props, handleClick}) {
+export function LawsuitCard({props, handleClick}: LawsuitCardComponentProps) {
 
   return (
     <Card className={styles.lawsuit} onClick={() => handleClick(props)}>

@@ -1,8 +1,9 @@
 import { Flex, Heading, ScrollArea, Text } from "@radix-ui/themes";
 
 import styles from "@/styles/Lawsuit-details.module.css"
+import { LawsuitProps } from "@/interfaces/Lawsuit-details.types";
 
-export function LawsuitDetails({lawsuit}) {
+export function LawsuitDetails({lawsuit}: {lawsuit: LawsuitProps}) {
   return <Flex align='start' direction={"column"} gap="0">
           <Heading size='4'>
             Detalhes
