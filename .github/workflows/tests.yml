@@ -23,5 +23,5 @@ jobs:
         working-directory: frontend-boilerplate  # Navigate to your project folder
 
       - name: Run tests
-        run: pnpm run test
+        run: npx jest
         working-directory: frontend-boilerplate  # Navigate to your project folder
