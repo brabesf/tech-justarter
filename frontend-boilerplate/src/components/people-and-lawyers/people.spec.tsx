@@ -1,17 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Lawyer } from './lawyer';
+import { People } from './people';
 
 describe('<Lawyer />', () => {
-    const exampleLawyer = {
-      name: 'Ana Joyce',
+    const examplePeople= {
+        role: "Réu",
+        name: "Empresa Xyz Ltda."
     };
   
-    it('should render the lawyer details correctly', () => {
-      render(<Lawyer lawyer={exampleLawyer} />);
+    it('should render the related people details correctly', () => {
+      render(<People people={examplePeople} />);
   
-      expect(screen.getByText(exampleLawyer.name)).toBeInTheDocument();
-      expect(screen.getByText('Advogado envolvido')).toBeInTheDocument();
+      expect(screen.getByText(examplePeople.name)).toBeInTheDocument();
+      expect(screen.getByText("Parte envolvida - "+ examplePeople.role)).toBeInTheDocument();
     });
   
   });
