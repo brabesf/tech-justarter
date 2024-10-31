@@ -4,7 +4,7 @@ import React, {useState} from "react";
 
 import styles from "@/styles/Lawsuit-movement.module.css"
 
-function formatDateToDDMMYYYY(date) {
+function formatDateToDDMMYYYY(date: Date) {
   const day = String(date.getDate()).padStart(2, '0'); // Get the day and pad with leading zero
   const month = String(date.getMonth() + 1).padStart(2, '0'); // Get the month (0-indexed) and pad
   const year = date.getFullYear(); // Get the full year

@@ -3,9 +3,9 @@ import { TextField } from "@radix-ui/themes";
 
 import styles from "@/styles/CnjSelector.module.css"
 
-export function CnjSelector({ cnj, setCnj }) {
+export function CnjSelector({ cnj, setCnj } : {cnj: string, setCnj: (cnj: string) => void}) {
     
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCnj(event.target.value);
       };
     

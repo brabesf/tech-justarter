@@ -1,6 +1,6 @@
 import { Button,DropdownMenu } from "@radix-ui/themes";
 
-export function CourtSelector({tribunal, setTribunal}) {
+export function CourtSelector({tribunal, setTribunal} : {tribunal: string, setTribunal: (tribunal: string) => void}) {
   return <DropdownMenu.Root>
 			<DropdownMenu.Trigger>
 				<Button variant="soft" size='3'>
