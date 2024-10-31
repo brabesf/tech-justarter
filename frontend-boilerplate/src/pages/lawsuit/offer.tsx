@@ -1,9 +1,10 @@
-import image from '@/resources/pix.jpg'
 import { Button } from '@radix-ui/themes';
 import Image from 'next/image'
 import { useRouter } from 'next/router';
 
-export default function offerPage(){
+import image from '@/resources/pix.jpg'
+
+export default function OfferPage(){
     const router = useRouter();
 
     const handleBack = () => {

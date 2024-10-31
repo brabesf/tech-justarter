@@ -1,4 +1,4 @@
-import { Text, Heading, Flex } from "@radix-ui/themes";
+import { Flex,Heading, Text } from "@radix-ui/themes";
 
 export function Lawyer({lawyer}) {
   return <Flex align='start' direction={"column"} gap="0">

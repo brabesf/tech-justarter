@@ -1,7 +1,7 @@
 import { Button, Flex } from "@radix-ui/themes";
-import { CourtSelector } from "./court-selector";
+
 import { CnjSelector } from "./cnj-selector";
-import { set } from "lodash";
+import { CourtSelector } from "./court-selector";
 
 export function SearchInput({tribunal, setTribunal, cnj, setCnj, onSearch}) {
 

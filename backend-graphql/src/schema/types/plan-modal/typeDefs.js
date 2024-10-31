@@ -7,8 +7,8 @@ export const PlanOfferType = new GraphQLObjectType({
   name: 'Offer',
   description: 'Offer modal for plan update',
   fields: () => ({
-    header: { type: PlanHeaderType},
-    body: { type: PlanBodyType},
-    footer: { type: PlanFooterType},
+    header: { type: PlanHeaderType },
+    body: { type: PlanBodyType },
+    footer: { type: PlanFooterType },
   }),
 });

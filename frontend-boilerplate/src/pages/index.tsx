@@ -1,31 +1,13 @@
-import { gql, useLazyQuery, useQuery } from "@apollo/client";
-import { Button, Flex, ScrollArea, Text } from "@radix-ui/themes";
-import { useRouter } from "next/router";
+import { gql, useLazyQuery } from "@apollo/client";
+import { Flex, ScrollArea, Text } from "@radix-ui/themes";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { HelloWorld, SearchHeader, SearchInput } from "@/components";
-import { UserCard } from "@/components/user-card/user-card";
+
+import { SearchHeader, SearchInput } from "@/components";
 import { LawsuitCard } from "@/components/lawsuit-card/lawsuit-card";
 import { addApolloState, initializeApollo } from "@/lib/apolloClient";
 import styles from "@/styles/Home.module.css";
-
-const UserFragment = gql`
-  fragment userFragment on User {
-    email
-    name
-    age
-  }
-`;
-
-const exampleQuery = gql`
-  query user($userId: ID!) {
-    getUserQuery(id: $userId) {
-      id
-      ...userFragment
-    }
-  }
-  ${UserFragment}
-`;
 
 const searchQuery = gql`
   query search($query: String!) {
@@ -39,17 +21,10 @@ const searchQuery = gql`
   }
 `;
 
-interface HomeProps {
-  variables: {
-    query: string;
-  };
-}
 
-export default function Home(props: HomeProps) {
-  const { variables } = props;
-  const { data } = useQuery(searchQuery, {
-    variables,
-  });
+export default function Home() {
+  
+  
   const router = useRouter();
   const [court, setCourt] = useState('Tribunal')
 
@@ -73,7 +48,6 @@ export default function Home(props: HomeProps) {
     router.push(`/lawsuit/${selected.number}`); 
   };
 
-  const search = data?.getSearchQuery;
   return (
     <>
       <Head>

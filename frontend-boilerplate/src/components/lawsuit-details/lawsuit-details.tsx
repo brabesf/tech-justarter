@@ -1,4 +1,5 @@
-import { Heading, Flex, ScrollArea, Text } from "@radix-ui/themes";
+import { Flex, Heading, ScrollArea, Text } from "@radix-ui/themes";
+
 import styles from "@/styles/Lawsuit-details.module.css"
 
 export function LawsuitDetails({lawsuit}) {

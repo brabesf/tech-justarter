@@ -1,4 +1,4 @@
-import { Heading, Flex } from "@radix-ui/themes";
+import { Flex,Heading } from "@radix-ui/themes";
 
 export function SearchHeader() {
   return <Flex align='center' direction={"column"} gap="6">

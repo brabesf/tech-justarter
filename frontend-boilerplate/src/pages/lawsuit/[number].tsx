@@ -1,10 +1,11 @@
-import { useRouter } from 'next/router';
-import { gql, useQuery, useMutation } from '@apollo/client';
-import { addApolloState, initializeApollo } from "@/lib/apolloClient";
+import { gql, useMutation,useQuery } from '@apollo/client';
 import { Flex} from "@radix-ui/themes";
 import Head from "next/head";
+import { useRouter } from 'next/router';
+
+import { LawsuitDetails,LawsuitHeader, LawsuitMovementList, PeopleAndLawyers } from '@/components';
+import { addApolloState, initializeApollo } from "@/lib/apolloClient";
 import styles from "@/styles/Lawsuit-description.module.css"
-import { LawsuitHeader, LawsuitMovementList, PeopleAndLawyers, LawsuitDetails } from '@/components';
 
 const searchQuery = gql`
   query search($query: String!) {
@@ -165,11 +166,11 @@ export default function LawsuitPage(props: HomeProps) {
     router.push("/lawsuit/offer")
   }
 
-  const [registerLastInteraction, { loadingMutation, errorMutation, dataMutation }] = useMutation(sendMutation);
+  const [registerLastInteraction] = useMutation(sendMutation);
   
   const lawsuit = data?.getSearchQuery.lawsuits[0]
   
-  const callInteraction = async (id: Number) => {
+  const callInteraction = async (id: number) => {
     
     await registerLastInteraction({
       variables: {

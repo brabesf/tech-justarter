@@ -1,7 +1,8 @@
-import { Card, DataList, Text, AlertDialog, Flex, Button } from "@radix-ui/themes";
-import { Cross1Icon, CheckIcon } from "@radix-ui/react-icons";
-import styles from "@/styles/Lawsuit-movement.module.css"
+import { CheckIcon,Cross1Icon } from "@radix-ui/react-icons";
+import { AlertDialog, Button,Card, DataList, Flex, Text } from "@radix-ui/themes";
 import React, {useState} from "react";
+
+import styles from "@/styles/Lawsuit-movement.module.css"
 
 function formatDateToDDMMYYYY(date) {
   const day = String(date.getDate()).padStart(2, '0'); // Get the day and pad with leading zero
@@ -44,7 +45,7 @@ export function LawsuitMovement({movement, blur, offer, callAccept, movementId, 
             </Flex>
             <Flex gap = '3' direction='column'>
               {offer.body.benefits.map((item, index) => (
-                <Flex gap='3'>
+                <Flex key={index} gap='3'>
                   <CheckIcon color="green"/>
                   <Text size='1'>{item}</Text>
                 </Flex>

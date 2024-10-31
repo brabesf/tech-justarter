@@ -8,7 +8,7 @@ export const experimentData = {
     alternative: { type: new GraphQLNonNull(GraphQLString) },
     simulating: { type: new GraphQLNonNull(GraphQLBoolean) },
   },
-  resolve: async (root, {alternative, simulating}) => {
+  resolve: async (root, { alternative, simulating }) => {
     return experimentAPI.getExperiment(alternative, simulating);
   },
 };

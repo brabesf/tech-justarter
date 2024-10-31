@@ -1,5 +1,12 @@
-import { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLNonNull, GraphQLInt, GraphQLList } from 'graphql';
-import { PlanPriceType }from '../plan-price/typeDefs';
+import {
+  GraphQLObjectType,
+  GraphQLID,
+  GraphQLString,
+  GraphQLNonNull,
+  GraphQLInt,
+  GraphQLList,
+} from 'graphql';
+import { PlanPriceType } from '../plan-price/typeDefs';
 import { PlanButtonType } from '../plan-button/typeDefs';
 
 export const PlanBodyType = new GraphQLObjectType({
@@ -9,6 +16,5 @@ export const PlanBodyType = new GraphQLObjectType({
     benefits: { type: new GraphQLList(GraphQLString) },
     price: { type: PlanPriceType },
     button: { type: PlanButtonType },
-
   }),
 });

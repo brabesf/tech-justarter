@@ -1,12 +1,6 @@
 import { Card, DataList } from "@radix-ui/themes";
-import styles from "@/styles/Lawsuit-card.module.css";
 
-interface LawsuitCardProps {
-  lawsuit: {
-    number: string;
-    court: string;
-  };
-}
+import styles from "@/styles/Lawsuit-card.module.css";
 
 export function LawsuitCard({props, handleClick}) {
 

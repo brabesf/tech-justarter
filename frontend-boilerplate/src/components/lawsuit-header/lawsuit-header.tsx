@@ -1,4 +1,5 @@
-import { Heading, Flex, Button } from "@radix-ui/themes";
+import { Button,Flex, Heading } from "@radix-ui/themes";
+
 import styles from "@/styles/Lawsuit-header.module.css"
 
 export function LawsuitHeader({number, court, date, handleBack}) {

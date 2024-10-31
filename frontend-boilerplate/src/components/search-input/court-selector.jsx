@@ -1,4 +1,4 @@
-import { DropdownMenu, Button } from "@radix-ui/themes";
+import { Button,DropdownMenu } from "@radix-ui/themes";
 
 export function CourtSelector({tribunal, setTribunal}) {
   return <DropdownMenu.Root>
