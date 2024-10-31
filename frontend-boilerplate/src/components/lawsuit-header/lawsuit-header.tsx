@@ -4,7 +4,7 @@ import styles from "@/styles/Lawsuit-header.module.css"
 export function LawsuitHeader({number, court, date, handleBack}) {
   return <Flex className={styles.header} gap="9">
           <Flex direction='column'>
-          <Heading size='6'>
+          <Heading size='7'>
             {"Processo n°" + number + " do " + court}
           </Heading>
           <Heading size='2'>

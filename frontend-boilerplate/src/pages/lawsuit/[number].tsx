@@ -195,12 +195,12 @@ export default function LawsuitPage(props: HomeProps) {
       <main className={styles.home}>
         <LawsuitHeader number={lawsuit.number} court={lawsuit.court} date={lawsuit.date} handleBack={handleBack}/>
         <Flex gap='9'>
-          <LawsuitMovementList movements={lawsuit.activities} 
+          <LawsuitMovementList movements={lawsuit.activities.slice().reverse()} 
                                 participating={experiment == 'variant-a' || experiment == 'variant-b'} 
                                   offer={offer}
                                   callAccept={callAccept}
                                   callInteraction={callInteraction}/>
-          <Flex direction='column'>
+          <Flex direction='column' gap='4'>
             <LawsuitDetails lawsuit={lawsuit}/>
             <PeopleAndLawyers people={lawsuit.related_people} lawyers={lawsuit.lawyers}/>
           </Flex>

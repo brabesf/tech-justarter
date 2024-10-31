@@ -3,6 +3,14 @@ import { Cross1Icon, CheckIcon } from "@radix-ui/react-icons";
 import styles from "@/styles/Lawsuit-movement.module.css"
 import React, {useState} from "react";
 
+function formatDateToDDMMYYYY(date) {
+  const day = String(date.getDate()).padStart(2, '0'); // Get the day and pad with leading zero
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Get the month (0-indexed) and pad
+  const year = date.getFullYear(); // Get the full year
+
+  return `${day}/${month}/${year}`; // Format as DD/MM/YYYY
+}
+
 export function LawsuitMovement({movement, blur, offer, callAccept, movementId, callInteraction}) {
   
   const [isHovered, setIsHovered] = useState(false);
@@ -26,7 +34,7 @@ export function LawsuitMovement({movement, blur, offer, callAccept, movementId, 
               <Flex align='start' justify='start' direction='row' gap='7'>
                 <AlertDialog.Title>{offer.header.title}</AlertDialog.Title>
                 <AlertDialog.Cancel>
-                    <Cross1Icon style={{justifyContent: 'end'}}/>
+                    <Cross1Icon/>
                 </AlertDialog.Cancel> 
               </Flex>
               
@@ -49,7 +57,7 @@ export function LawsuitMovement({movement, blur, offer, callAccept, movementId, 
             <Text size='1'>{"No "+ offer.body.price.period}</Text>
           </Flex>     
           <AlertDialog.Action>
-            <Button variant="solid" color="jade" style={{width: '100%'}} onClick={callAccept}>
+            <Button variant="solid" className={styles.button} onClick={callAccept}>
               {offer.body.button.label}
             </Button>
           </AlertDialog.Action>
@@ -64,7 +72,7 @@ export function LawsuitMovement({movement, blur, offer, callAccept, movementId, 
             <DataList.Root>
               <DataList.Item>
                 <DataList.Label>Data:</DataList.Label>
-                <DataList.Value>{movement.date}</DataList.Value>
+                <DataList.Value>{formatDateToDDMMYYYY(new Date(movement.date * 1000))}</DataList.Value>
               </DataList.Item>
               <DataList.Item>
                 <DataList.Label>Movimentação:</DataList.Label>
