@@ -3,7 +3,7 @@ export interface RelatedPeople {
     name: string;
 }
 
-export interface Lawyer {
+export interface LawyerProps {
     name: string;
 }
 
@@ -23,6 +23,6 @@ export interface LawsuitProps {
     judge: string;
     value: number;
     related_people: RelatedPeople[];
-    lawyers: Lawyer[];
+    lawyers: LawyerProps[];
     activities: Activity[];
 }
