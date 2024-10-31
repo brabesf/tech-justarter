@@ -60,7 +60,7 @@ const responses = [
         name: "litigants-experiment",
       },
       alternative: {
-        name: req.query.alternative || "variant-b",
+        name: req.query.alternative || "variant-a",
       },
       client_id: "a8f0a7cd-ab76-4fa1-9294-7aac653010d9",
       participating: req.query.simulating === "true" ? false : true,

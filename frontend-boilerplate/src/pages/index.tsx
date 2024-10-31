@@ -55,11 +55,6 @@ export default function Home(props: HomeProps) {
 
   const [cnj, setCnj] = useState('');
 
-  
-
-  const [loadUser, { loading: loadingNewUser, data: newUser }] =
-    useLazyQuery(exampleQuery);
-
   const [loadSearch, { loading: loadingSearch, data: searchResponse }] =
     useLazyQuery(searchQuery);
 
@@ -74,20 +69,8 @@ export default function Home(props: HomeProps) {
     });
   }
 
-  const onLoadUser = () => {
-    loadUser({
-      variables: {
-        userId: "2",
-      },
-      onError: (error) => {
-        console.error(error);
-      },
-    });
-  };
-
   const handleSelectLawsuit = (selected) => {
     router.push(`/lawsuit/${selected.number}`); 
-    
   };
 
   const search = data?.getSearchQuery;

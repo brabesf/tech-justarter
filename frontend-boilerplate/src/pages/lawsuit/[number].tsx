@@ -35,10 +35,77 @@ const searchQuery = gql`
   }
 `;
 
+const getExperiment = gql`
+  query($alternative: String!, $simulating: Boolean!) {
+    experimentData(alternative: $alternative, simulating: $simulating) {
+      status
+      simulating
+      participating
+      experiment_group {
+        name
+      }
+      experiment {
+        name
+      }
+      client_id
+      alternative {
+        name
+      }
+    }
+  }
+`;
+
+const getOffer = gql`
+  query Header {
+    getNextPlanQuery {
+      header {
+        title
+        subtitle
+      }
+      footer {
+        text
+      }
+      body {
+        price {
+          period
+          next
+          current
+        }
+        button {
+          label
+        }
+        benefits
+      }
+    }
+  }
+`;
+
+
+interface OfferProps {
+  header: {
+    title: string
+    subtitle: string
+  };
+  body: {
+    benefits: [string]
+    button: {
+      label: string
+    }
+    price: {
+      period: string
+      next: string
+      current: string
+    }
+  };
+  footer: string
+}
+
 interface HomeProps {
   variables: {
     query: string;
   };
+  experiment: string
+  offer: OfferProps
 }
 
 export async function getServerSideProps(context) {
@@ -46,25 +113,39 @@ export async function getServerSideProps(context) {
 
   const {number} = context.query
 
+  const exp_variables = {
+    alternative: "control",
+    simulating: false
+  };
+
+  const [exp_result, offer_result] = await Promise.all([
+    
+    apolloClient.query({
+      query: getExperiment,
+      variables: exp_variables,
+    }),
+
+    apolloClient.query({
+      query: getOffer,
+    })
+  ]);
+
   const variables = {
     query: number,
   };
 
-  await apolloClient.query({
-    query: searchQuery,
-    variables,
-  });
-
   return addApolloState(apolloClient, {
     props: {
       variables,
+      participating: exp_result.data.experimentData.participating,
+      offer: offer_result.data.getNextPlanQuery
     },
   });
 }
 
 export default function LawsuitPage(props: HomeProps) {
   const router = useRouter();
-  const { variables } = props;
+  const { variables, experiment, offer } = props;
   const { data, loading, error } = useQuery(searchQuery, {
     variables,
   });
@@ -72,6 +153,10 @@ export default function LawsuitPage(props: HomeProps) {
   const handleBack = () => {
     router.push(`/`);
   };
+
+  const callAccept = () => {
+    router.push("/lawsuit/offer")
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -90,7 +175,10 @@ export default function LawsuitPage(props: HomeProps) {
       <main className={styles.home}>
         <LawsuitHeader number={lawsuit.number} court={lawsuit.court} date={lawsuit.date} handleBack={handleBack}/>
         <Flex gap='9'>
-          <LawsuitMovementList movements={lawsuit.activities}/>
+          <LawsuitMovementList movements={lawsuit.activities} 
+                                participating={experiment == 'variant-a'} 
+                                  offer={offer}
+                                  callAccept={callAccept}/>
           <Flex direction='column'>
             <LawsuitDetails lawsuit={lawsuit}/>
             <PeopleAndLawyers people={lawsuit.related_people} lawyers={lawsuit.lawyers}/>
