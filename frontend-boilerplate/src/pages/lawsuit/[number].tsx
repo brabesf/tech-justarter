@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useMutation } from '@apollo/client';
 import { addApolloState, initializeApollo } from "@/lib/apolloClient";
 import { Flex} from "@radix-ui/themes";
 import Head from "next/head";
@@ -80,6 +80,13 @@ const getOffer = gql`
   }
 `;
 
+const sendMutation = gql`
+  mutation RegisterLastInteraction($lawsuitNumber: String!, $movementId: Int!) {
+  RegisterLastInteraction(lawsuitNumber: $lawsuitNumber, movementId: $movementId) {
+    status
+  }
+}
+`;
 
 interface OfferProps {
   header: {
@@ -158,6 +165,20 @@ export default function LawsuitPage(props: HomeProps) {
     router.push("/lawsuit/offer")
   }
 
+  const [registerLastInteraction, { loadingMutation, errorMutation, dataMutation }] = useMutation(sendMutation);
+  
+  const lawsuit = data?.getSearchQuery.lawsuits[0]
+  
+  const callInteraction = async (id: Number) => {
+    
+    await registerLastInteraction({
+      variables: {
+        lawsuitNumber: lawsuit.number,
+        movementId: id
+      },
+    });
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -166,7 +187,6 @@ export default function LawsuitPage(props: HomeProps) {
     return <div>Error: {error.message}</div>;
   }
 
-  const lawsuit = data?.getSearchQuery.lawsuits[0]
   return (
     <>
       <Head>
@@ -178,7 +198,8 @@ export default function LawsuitPage(props: HomeProps) {
           <LawsuitMovementList movements={lawsuit.activities} 
                                 participating={experiment == 'variant-a' || experiment == 'variant-b'} 
                                   offer={offer}
-                                  callAccept={callAccept}/>
+                                  callAccept={callAccept}
+                                  callInteraction={callInteraction}/>
           <Flex direction='column'>
             <LawsuitDetails lawsuit={lawsuit}/>
             <PeopleAndLawyers people={lawsuit.related_people} lawyers={lawsuit.lawyers}/>

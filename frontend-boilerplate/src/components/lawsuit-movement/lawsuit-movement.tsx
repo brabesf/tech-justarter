@@ -3,7 +3,7 @@ import { Cross1Icon, CheckIcon } from "@radix-ui/react-icons";
 import styles from "@/styles/Lawsuit-movement.module.css"
 import React, {useState} from "react";
 
-export function LawsuitMovement({movement, blur, offer, callAccept}) {
+export function LawsuitMovement({movement, blur, offer, callAccept, movementId, callInteraction}) {
   
   const [isHovered, setIsHovered] = useState(false);
   
@@ -13,7 +13,8 @@ export function LawsuitMovement({movement, blur, offer, callAccept}) {
       <>
         <AlertDialog.Trigger>
           <Card className={styles.blurred}
-            onMouseLeave={() => setIsHovered(false)}>
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={() => callInteraction(movementId)}>
               <DataList.Root>
                 Clique para liberar a última movimentação
               </DataList.Root>
@@ -58,7 +59,8 @@ export function LawsuitMovement({movement, blur, offer, callAccept}) {
       </AlertDialog.Content>
       </>
     : <Card className={styles.movement}
-        onMouseEnter={() => blur ? setIsHovered(true) : setIsHovered(false)}>
+        onMouseEnter={() => blur ? setIsHovered(true) : setIsHovered(false)}
+        onMouseLeave={() => setIsHovered(false)}>
             <DataList.Root>
               <DataList.Item>
                 <DataList.Label>Data:</DataList.Label>

@@ -7,7 +7,7 @@ export const RegisterLastInteraction = {
   type: InteractionType,
   args: {
     lawsuitNumber: { type: new GraphQLNonNull(GraphQLString) },
-    movementId: {type: new GraphQLNonNull(GraphQLInt)}
+    movementId: {type: GraphQLInt}
   },
   resolve: async (root, {lawsuitNumber, movementId}) => {
     return mutationAPI.sendMutation({lawsuitNumber, movementId})
