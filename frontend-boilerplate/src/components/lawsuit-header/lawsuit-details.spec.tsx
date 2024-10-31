@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { LawsuitDetails } from './lawsuit-details';
+import { LawsuitHeader } from './lawsuit-header';
 
-describe('<LawsuitCard />', () => {
+describe('<LawsuitHeader />', () => {
     const exampleLawsuit = {
       value: 50000.75,
       subject: "Exploração do trabalho infantil",
@@ -42,14 +42,24 @@ describe('<LawsuitCard />', () => {
         }
       ]
     }
+    
+    const mockHandleClick = jest.fn();
+
+    it('should render the lawsuit header correctly', () => {
+      render(<LawsuitHeader lawsuit={exampleLawsuit} handleBack={mockHandleClick}/>);
   
-    it('should render the lawsuit details correctly', () => {
-      render(<LawsuitDetails lawsuit={exampleLawsuit} />);
+      expect(screen.getByText("Processo n°" + exampleLawsuit.number + " do " + exampleLawsuit.court)).toBeInTheDocument();
+      expect(screen.getByText("Data de distribuição: " + exampleLawsuit.date.slice(0, 10))).toBeInTheDocument();
+      expect(screen.getByText("Pesquisar outro processo")).toBeInTheDocument();
+      
+    });
+
+    it('should call handleBack', () => {
+      render(<LawsuitHeader lawsuit={exampleLawsuit} handleBack={mockHandleClick}/>);
+
+      fireEvent.click(screen.getByText('Pesquisar outro processo'));
   
-      expect(screen.getByText('Natureza: ' + exampleLawsuit.nature)).toBeInTheDocument();
-      expect(screen.getByText('Tipo: ' + exampleLawsuit.kind)).toBeInTheDocument();
-      expect(screen.getByText('Assunto: ' + exampleLawsuit.subject)).toBeInTheDocument();
-      expect(screen.getByText('Valor: R$' + exampleLawsuit.value)).toBeInTheDocument();
+      expect(mockHandleClick).toHaveBeenCalled();
     });
   
   });
