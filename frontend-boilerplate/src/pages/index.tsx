@@ -1,5 +1,5 @@
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
-import { Button, Flex, Text } from "@radix-ui/themes";
+import { Button, Flex, ScrollArea, Text } from "@radix-ui/themes";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useState } from "react";
@@ -85,14 +85,14 @@ export default function Home(props: HomeProps) {
           <SearchHeader/>
          
           <SearchInput tribunal={court} setTribunal={setCourt} cnj={cnj} setCnj={setCnj} onSearch={onSearch}/>
-          <Flex className={styles.results}>
+          <ScrollArea className={styles.results}>
             
             {loadingSearch && <Text>Carregando...</Text>}
             {searchResponse?.getSearchQuery && searchResponse.getSearchQuery.lawsuits.map((item, index) => (
                                                   <LawsuitCard key={index} props={item} handleClick={handleSelectLawsuit}/>
                                                 ))}
                                             
-          </Flex>
+          </ScrollArea>
         </Flex>
       </main>
     </>

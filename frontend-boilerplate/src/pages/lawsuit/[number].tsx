@@ -137,7 +137,7 @@ export async function getServerSideProps(context) {
   return addApolloState(apolloClient, {
     props: {
       variables,
-      participating: exp_result.data.experimentData.participating,
+      experiment: exp_result.data.experimentData.alternative.name,
       offer: offer_result.data.getNextPlanQuery
     },
   });
@@ -176,7 +176,7 @@ export default function LawsuitPage(props: HomeProps) {
         <LawsuitHeader number={lawsuit.number} court={lawsuit.court} date={lawsuit.date} handleBack={handleBack}/>
         <Flex gap='9'>
           <LawsuitMovementList movements={lawsuit.activities} 
-                                participating={experiment == 'variant-a'} 
+                                participating={experiment == 'variant-a' || experiment == 'variant-b'} 
                                   offer={offer}
                                   callAccept={callAccept}/>
           <Flex direction='column'>

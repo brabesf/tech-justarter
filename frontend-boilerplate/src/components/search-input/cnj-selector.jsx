@@ -10,6 +10,9 @@ export function CnjSelector({ cnj, setCnj }) {
 
   return (
     <TextField.Root
+      style={{height: '100%',
+        width: "25vw"
+      }}
       type="text"
       value={cnj}
       onChange={handleChange}

@@ -1,7 +1,6 @@
 .blurred {
     width: 100%;
-    min-height: 25%;
-    overflow-y: auto;
+    min-height: 15vh;
   }
 
 .blurredText {
@@ -16,6 +15,5 @@
 
 .movement {
     width: 100%;
-    min-height: 25%;
-    overflow-y: auto;
+    min-height: 15vh;
   }
