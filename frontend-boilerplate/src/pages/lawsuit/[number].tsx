@@ -203,7 +203,7 @@ export default function LawsuitPage(props: HomeProps) {
                                   callInteraction={callInteraction}/>
           <Flex direction='column' gap='4'>
             <LawsuitDetails lawsuit={lawsuit}/>
-            <PeopleAndLawyers people={lawsuit.related_people} lawyers={lawsuit.lawyers}/>
+            <PeopleAndLawyers lawsuit={lawsuit}/>
           </Flex>
           
         </Flex>

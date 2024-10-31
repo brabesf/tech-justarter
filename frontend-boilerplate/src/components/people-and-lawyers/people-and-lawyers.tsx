@@ -4,17 +4,18 @@ import styles from "@/styles/Parties.module.css"
 
 import { Lawyer } from "./lawyer"
 import { People } from "./people";
+import { LawsuitProps } from "@/interfaces/Lawsuit-details.types";
 
-export function PeopleAndLawyers({people, lawyers}) {
+export function PeopleAndLawyers({lawsuit} : {lawsuit : LawsuitProps}) {
   return <Flex align='start' direction={"column"} gap="0">
           <Heading size='4'>
             Partes envolvidas
           </Heading>
           <ScrollArea className={styles.parties}>
-            {people.map((item, index) => (
+            {lawsuit.related_people.map((item, index) => (
               <People key={index} people={item}/>
               ))}
-            {lawyers.map((item, index) => (
+            {lawsuit.lawyers.map((item, index) => (
               <Lawyer key={index} lawyer={item}/>
               ))}
           </ScrollArea>
