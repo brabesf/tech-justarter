@@ -8,7 +8,7 @@ import { SearchHeader, SearchInput } from "@/components";
 import { LawsuitCard } from "@/components/lawsuit-card/lawsuit-card";
 import { addApolloState, initializeApollo } from "@/lib/apolloClient";
 import styles from "@/styles/Home.module.css";
-
+import { LawsuitProps } from "@/interfaces/Lawsuit-details.types";
 const searchQuery = gql`
   query search($query: String!) {
     getSearchQuery(query: $query) {
@@ -44,7 +44,7 @@ export default function Home() {
     });
   }
 
-  const handleSelectLawsuit = (selected) => {
+  const handleSelectLawsuit = (selected: LawsuitProps) => {
     router.push(`/lawsuit/${selected.number}`); 
   };
 
@@ -62,7 +62,7 @@ export default function Home() {
           <ScrollArea className={styles.results}>
             
             {loadingSearch && <Text>Carregando...</Text>}
-            {searchResponse?.getSearchQuery && searchResponse.getSearchQuery.lawsuits.map((item, index) => (
+            {searchResponse?.getSearchQuery && searchResponse.getSearchQuery.lawsuits.map((item: LawsuitProps, index: number) => (
                                                   <LawsuitCard key={index} props={item} handleClick={handleSelectLawsuit}/>
                                                 ))}
                                             

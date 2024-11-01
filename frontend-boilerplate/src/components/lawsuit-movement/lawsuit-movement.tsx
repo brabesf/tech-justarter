@@ -1,9 +1,9 @@
 import { CheckIcon,Cross1Icon } from "@radix-ui/react-icons";
 import { AlertDialog, Button,Card, DataList, Flex, Text } from "@radix-ui/themes";
 import React, {useState} from "react";
-
+import { Activity } from "@/interfaces/Lawsuit-details.types";
 import styles from "@/styles/Lawsuit-movement.module.css"
-
+import { OfferProps } from "@/pages/lawsuit/[number]";
 function formatDateToDDMMYYYY(date: Date) {
   const day = String(date.getDate()).padStart(2, '0'); // Get the day and pad with leading zero
   const month = String(date.getMonth() + 1).padStart(2, '0'); // Get the month (0-indexed) and pad
@@ -12,7 +12,7 @@ function formatDateToDDMMYYYY(date: Date) {
   return `${day}/${month}/${year}`; // Format as DD/MM/YYYY
 }
 
-export function LawsuitMovement({movement, blur, offer, callAccept, movementId, callInteraction}) {
+export function LawsuitMovement({movement, blur, offer, callAccept, movementId, callInteraction} : {movement: Activity, blur: boolean, offer: OfferProps, callAccept : () => void, movementId: number, callInteraction : (id: number) => void}) {
   
   const [isHovered, setIsHovered] = useState(false);
   

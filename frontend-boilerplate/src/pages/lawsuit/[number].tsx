@@ -89,7 +89,7 @@ const sendMutation = gql`
 }
 `;
 
-interface OfferProps {
+export interface OfferProps {
   header: {
     title: string
     subtitle: string
@@ -116,7 +116,7 @@ interface HomeProps {
   offer: OfferProps
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const apolloClient = initializeApollo();
 
   const {number} = context.query

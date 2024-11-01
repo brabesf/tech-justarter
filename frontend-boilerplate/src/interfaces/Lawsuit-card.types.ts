@@ -1,9 +1,6 @@
-export interface LawsuitCardProps {
-    number: string;
-    court: string;
-}
+import { LawsuitProps } from "./Lawsuit-details.types";
   
 export interface LawsuitCardComponentProps {
-    props: LawsuitCardProps;
-    handleClick: (props: LawsuitCardProps) => void;
+    props: LawsuitProps;
+    handleClick: (props: LawsuitProps) => void;
 }
