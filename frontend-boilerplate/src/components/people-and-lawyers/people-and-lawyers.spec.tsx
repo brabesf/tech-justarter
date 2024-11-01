@@ -1,5 +1,6 @@
+import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+
 import { PeopleAndLawyers } from './people-and-lawyers';
 
 describe('<PeopleAndLawyers />', () => {
@@ -42,8 +43,6 @@ describe('<PeopleAndLawyers />', () => {
         }
       ]
     }
-    
-    const mockHandleClick = jest.fn();
 
     it('should render the lawyer details correctly', () => {
       render(<PeopleAndLawyers lawsuit={exampleLawsuit}/>);

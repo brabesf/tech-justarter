@@ -1,7 +1,8 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { CourtSelector } from './court-selector';
 import { Theme } from "@radix-ui/themes"
+import { fireEvent,render, screen } from '@testing-library/react';
+import React from 'react';
+
+import { CourtSelector } from './court-selector';
 
 describe('<CourtSelector />', () => {
     const mockTribunal = "Tribunal"

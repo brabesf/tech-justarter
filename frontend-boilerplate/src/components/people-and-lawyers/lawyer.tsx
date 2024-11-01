@@ -1,4 +1,5 @@
 import { Flex,Heading, Text } from "@radix-ui/themes";
+
 import {LawyerProps} from "@/interfaces/Lawsuit-details.types"
 
 export function Lawyer({lawyer} : {lawyer: LawyerProps}) {

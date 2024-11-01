@@ -1,9 +1,9 @@
 import { Button, Flex } from "@radix-ui/themes";
 
+import {SearchInputProps} from "@/interfaces/Search-input.types"
+
 import { CnjSelector } from "./cnj-selector";
 import { CourtSelector } from "./court-selector";
-
-import {SearchInputProps} from "@/interfaces/Search-input.types"
 
 export function SearchInput({tribunal, setTribunal, cnj, setCnj, onSearch} : SearchInputProps) {
 

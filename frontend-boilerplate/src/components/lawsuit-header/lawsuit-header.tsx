@@ -1,7 +1,8 @@
 import { Button,Flex, Heading } from "@radix-ui/themes";
 
-import styles from "@/styles/Lawsuit-header.module.css"
 import { LawsuitHeaderProps } from "@/interfaces/Lawsuit-header.types";
+import styles from "@/styles/Lawsuit-header.module.css"
+
 export function LawsuitHeader({lawsuit, handleBack} : LawsuitHeaderProps) {
   return <Flex className={styles.header} gap="9">
           <Flex direction='column'>

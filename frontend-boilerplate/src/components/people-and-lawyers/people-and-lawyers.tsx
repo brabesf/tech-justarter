@@ -1,10 +1,10 @@
 import { Flex, Heading, ScrollArea } from "@radix-ui/themes";
 
+import { LawsuitProps } from "@/interfaces/Lawsuit-details.types";
 import styles from "@/styles/Parties.module.css"
 
 import { Lawyer } from "./lawyer"
 import { People } from "./people";
-import { LawsuitProps } from "@/interfaces/Lawsuit-details.types";
 
 export function PeopleAndLawyers({lawsuit} : {lawsuit : LawsuitProps}) {
   return <Flex align='start' direction={"column"} gap="0">
