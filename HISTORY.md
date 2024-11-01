@@ -23,3 +23,7 @@ Se for possível observar o arquivo `frontend-boilerplate/src/components/search-
 ## Dockerização
 
 Também tive uma tentativa de dockerizar o projeto todo para rodar um só comando e subir as diferentes partes do projeto, contudo seguia tendo problemas de dependências nos diretórios do `backend-graphql` e `frontend-boilerplate`, e por isso acabei desistindo também. 
+
+## Lista de processos
+
+No lugar de simplemente cair diretamente na página do processo criei uma listagem dos processos antes para que se possa escolher o processo antes. Isso têm relação com a API de busca na ideia de que futuramente seja possível realizar buscas com base no nome, ou tipo do processo, o que retornaria uma lista de processos.
