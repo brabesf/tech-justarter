@@ -50,7 +50,7 @@ describe('<LawsuitCard />', () => {
       expect(screen.getByText('Natureza: ' + exampleLawsuit.nature)).toBeInTheDocument();
       expect(screen.getByText('Tipo: ' + exampleLawsuit.kind)).toBeInTheDocument();
       expect(screen.getByText('Assunto: ' + exampleLawsuit.subject)).toBeInTheDocument();
-      expect(screen.getByText('Valor: R$' + exampleLawsuit.value)).toBeInTheDocument();
+      expect(screen.getByText('Valor: R$50.000,75')).toBeInTheDocument();
     });
   
   });
