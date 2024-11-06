@@ -1,9 +1,9 @@
-import { PlanOfferType } from '../typeDefs';
 import nextPlanAPI from '../../../../apis/nextPlanAPI';
+import { PlanOfferType } from '../typeDefs';
 
 export const getNextPlanQuery = {
   type: PlanOfferType,
-  resolve: async (root) => {
+  resolve: async () => {
     return nextPlanAPI.getPlan();
   },
 };

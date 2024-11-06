@@ -1,11 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLID,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLInt,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLString } from 'graphql';
 
 export const PlanFooterType = new GraphQLObjectType({
   name: 'PlanFooter',

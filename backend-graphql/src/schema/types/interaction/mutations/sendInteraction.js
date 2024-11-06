@@ -1,6 +1,6 @@
 import { GraphQLInt, GraphQLNonNull, GraphQLString } from 'graphql';
-import mutationAPI from '../../../../apis/mutationAPI';
 
+import mutationAPI from '../../../../apis/mutationAPI';
 import { InteractionType } from '../typeDefs';
 
 export const RegisterLastInteraction = {

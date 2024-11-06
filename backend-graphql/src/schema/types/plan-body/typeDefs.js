@@ -1,13 +1,7 @@
-import {
-  GraphQLObjectType,
-  GraphQLID,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLInt,
-  GraphQLList,
-} from 'graphql';
-import { PlanPriceType } from '../plan-price/typeDefs';
+import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
+
 import { PlanButtonType } from '../plan-button/typeDefs';
+import { PlanPriceType } from '../plan-price/typeDefs';
 
 export const PlanBodyType = new GraphQLObjectType({
   name: 'PlanBody',

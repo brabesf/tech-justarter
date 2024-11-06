@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLString } from 'graphql';
 
-import { SearchResponseType } from '../typeDefs';
 import lawsuitsAPI from '../../../../apis/lawsuitsAPI';
+import { SearchResponseType } from '../typeDefs';
 
 export const getSearchQuery = {
   type: SearchResponseType,

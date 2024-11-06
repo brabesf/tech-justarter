@@ -1,12 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLID,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLInt,
-  GraphQLScalarType,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLList, GraphQLInt } from 'graphql';
 
 import { LawsuitType } from '../lawsuit/typeDefs';
 

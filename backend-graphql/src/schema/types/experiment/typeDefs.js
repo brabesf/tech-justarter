@@ -1,13 +1,7 @@
-import {
-  GraphQLObjectType,
-  GraphQLID,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLInt,
-  GraphQLBoolean,
-} from 'graphql';
-import { ExperimentGroupType } from '../experiment-group/typeDefs';
+import { GraphQLObjectType, GraphQLString, GraphQLBoolean } from 'graphql';
+
 import { ExperimentAlternativeType } from '../experiment-alternative/typeDefs';
+import { ExperimentGroupType } from '../experiment-group/typeDefs';
 import { ExperimentTypeType } from '../experiment-type/typeDefs';
 
 export const ExperimentType = new GraphQLObjectType({

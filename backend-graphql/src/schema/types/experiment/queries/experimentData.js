@@ -1,6 +1,7 @@
-import { ExperimentType } from '../typeDefs';
-import experimentAPI from '../../../../apis/experimentAPI';
 import { GraphQLBoolean, GraphQLNonNull, GraphQLString } from 'graphql';
+
+import experimentAPI from '../../../../apis/experimentAPI';
+import { ExperimentType } from '../typeDefs';
 
 export const experimentData = {
   type: ExperimentType,
